@@ -61,11 +61,9 @@ module.exports = {
 			case 'streaming':
 				//send streaming [game]
 				message.delete();
-				const streamingEmbed = new MessageEmbed()
-					.setColor('6441a5')
-					.setTitle('Streaming Anouncment!')
-					.setDescription('Come check my stream I will be playing ' + args[1])
-				message.channel.send({ embeds: [streamingEmbed]});	
+				let streamingMesssage = 'Streaming Anouncment! @everyone\n';
+				streamingMesssage += 'https://www.twitch.tv/spookymrghost'
+				message.channel.send(streamingMesssage);
 
 			break;
 		}
