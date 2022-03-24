@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, Collector } = require("discord.js");
 
 module.exports = {
 	name: 'send',
@@ -20,35 +20,23 @@ module.exports = {
 						{ name: 'Instuctions', value: 'React to this message with a green checkmark to get member role!' }
 					);
 				const tosMessage = await message.channel.send({embeds: [tosEmbed]});
-				tosMessage.react('✅');
+				await tosMessage.react('✅');
 				const memberRole = message.guild.roles.cache.find(role => role.name === 'Member');
 				client.on('messageReactionAdd', async (reaction, user) => {
-					if(reaction.message.partial) await reaction.message.fetch();
-					if(reaction.partial) await reaction.fetch();
-					if(user.bot) return;
-					if(!reaction.message.guild) return;
-					if(reaction.message.channel.id == tosMessageChannel.id){
-						await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole)
-					}else return;
+					await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole);
 				});
 				client.on('messageReactionRemove', async (reaction, user) => {
-					if(reaction.message.partial) await reaction.message.fetch();
-					if(reaction.partial) await reaction.fetch();
-					if(user.bot) return;
-					if(!reaction.message.guild) return;
-					if(reaction.message.channel.id == tosMessageChannel.id){
-						await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole)
-					}else return;
+					await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole);
 				});
 				break;
 			case 'rules':
 				let rules = '1. No racism or harassment\n\n';
 				rules += '2. No hate speech of any kind\n\n';
-				rules += '3. No NSFW content';
+				rules += '3. No NSFW content\n\n';
 				rules += '4. Self-promoting is not allowed unless done thru clips of gameplay\n\n';
-				rules += '5. Keep personal problems within dm\'s unless they result in harassment';
-				rules += '6. Doxing anyone is not permitted this includes banned members;';
-				rules += '7. Don\'t act like a feral animal';
+				rules += '5. Keep personal problems within dm\'s unless they result in harassment\n\n';
+				rules += '6. Doxing anyone is not permitted this includes banned members\n\n';
+				rules += '7. Don\'t act like a feral animal\n\n';
 				rulesInformation = 'The inability to follow any of these rules will make you receive a ban.\n Bans are issued to a member if sufficient evidence is issued to a mod or if the mod witnesses the rules break.\n If you believe you did not warrant a ban send a message in the unban-request channel, **DM requests are not accepted!**';
 				message.delete();
 				const rulesEmbed = new MessageEmbed()
