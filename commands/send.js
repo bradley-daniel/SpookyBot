@@ -14,10 +14,10 @@ module.exports = {
 				const tosMessageChannel = message.channel;
 				const tosEmbed = new MessageEmbed()
 					.setColor('#0099ff')
-					.setTitle('Tos')
+					.setTitle('TOS')
 					.setDescription("The member roles is a badge that says that you argree to the rules and accept a ban if they are broken!")
 					.addFields(
-						{ name: 'Instuctions', value: 'Reply to this message with a green checkmark understanding that you have read the rules' }
+						{ name: 'Instuctions', value: 'Reply to this message with a green checkmark to get member role!' }
 					);
 				const tosMessage = await message.channel.send({embeds: [tosEmbed]});
 				tosMessage.react('✅');
@@ -62,10 +62,17 @@ module.exports = {
 			case 'streaming':
 				//send streaming [game]
 				message.delete();
-				let streamingMesssage = 'Streaming Anouncment! @everyone\n';
+				let streamingMesssage = 'Streaming Anouncment @everyone!\n';
 				streamingMesssage += 'https://www.twitch.tv/spookymrghost'
 				message.channel.send(streamingMesssage);
 
+			break;
+			case 'welcome':
+				message.delete();
+				let welcomeMessage = 'This is a community server for my streaming community.\n';
+				welcomeMessage += 'Every time I go live Spooky Bot will sent a message that alerts everyone in <#956351663218753656>.\n';
+				welcomeMessage += '**To pocced to the server please review the rules and agree to the tos message sent by Spooky Bot.**\n';
+				message.channel.send(welcomeMessage);
 			break;
 		}
 	},
