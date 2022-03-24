@@ -47,7 +47,8 @@ module.exports = {
 				rules += '3. No NSFW content\n\n';
 				rules += '4. Self promoting is not allowed unless done thru clips of gamplay\n\n';
 				rules += '5. Keep personal promblems within dm\'s unless they result in harassment\n\n';
-				rules += '6. Doxing anyone is not permitted inclueding banned members';
+				rules += '6. Doxing anyone is not permitted this includes banned members';
+				rules += '7. Don\'t act like a fereal animal';
 				rulesInformation = 'The inablity to follow any of these rules will make you receive a ban.\n Bans are issued to a member if suffiecent evadence is issued to a mod or if the mod witness the rules break.\n If you believe you did not warrent a ban send a message in the unban-request channel, **DM requests are not accepted!**';
 				message.delete();
 				const rulesEmbed = new MessageEmbed()
