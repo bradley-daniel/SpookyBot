@@ -12,14 +12,14 @@ module.exports = {
     execute(client, message, args){
         if(args[2] !== 'perm' && isNaN(args[2])) return message.reply("The time specified is not a valid amount");
         if(args[1] == null) return message.reply("Need a reason to ban");
-        //Bans Channels
-        const banChannel = message.guild.channels.cache.get('954498995726733312');
-        //
+
         const banTimeMilliseconds = args[2] * 1000;
         const member = message.mentions.users.first();
         //Banned role
         const bannedRole = message.guild.roles.cache.find(role => role.name === 'Banned');
         if(member){
+            //Bans Channels
+            const banChannel = message.guild.channels.cache.get('954498995726733312');
             //Member
             const memberTarget = message.guild.members.cache.get(member.id);
             const memberName = member.username + '#' + member.discriminator;
