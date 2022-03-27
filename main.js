@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const mongoose = require('mongoose');
 const { Intents } = require('discord.js');
 require('dotenv').config();
 const client = new Discord.Client({
@@ -16,6 +17,18 @@ const client = new Discord.Client({
 
 	],
 });
+mongoose
+	.connect(process.env.MONGODB_SRV, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => {
+		console.log('Connected to the database!');
+	})
+	.catch((err) => {
+		console.log(err);
+	});
+
 client.commands = new Discord.Collection();
 ['command_handler', 'event_handler'].forEach((handler) => {
 	require(`./handlers/${handler}`)(client, Discord);

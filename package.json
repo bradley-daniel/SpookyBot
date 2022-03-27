@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Bradley-Daniel/SpookyBot#readme",
   "dependencies": {
     "discord.js": "^13.6.0",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.2.8"
   }
 }
