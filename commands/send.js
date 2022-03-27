@@ -23,10 +23,14 @@ module.exports = {
 				await tosMessage.react('✅');
 				const memberRole = message.guild.roles.cache.find(role => role.name === 'Member');
 				client.on('messageReactionAdd', async (reaction, user) => {
-					await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole);
+					if(reaction.message == tosMessage){
+						await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole);
+					}
 				});
 				client.on('messageReactionRemove', async (reaction, user) => {
-					await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole);
+					if(reaction.message == tosMessage){
+						await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole);
+					}
 				});
 				break;
 			case 'rules':

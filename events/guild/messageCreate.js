@@ -5,7 +5,9 @@ module.exports = async (discord, client, message) => {
 	const prefix = '!';
 
 	if (!message.content.startsWith(prefix) || message.author.bot) {
-		return;
+		if(!message.channel.name == 'test'){
+			return;
+		}
 	}
 	//used is the message in main server
 	const args = message.content.slice(prefix.length).split(/ +/);
