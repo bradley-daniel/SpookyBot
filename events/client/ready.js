@@ -1,3 +1,3 @@
-module.exports = async (Discord, client) => {
+module.exports = async () => {
 	console.log('Spooky_Bot is Online!');
 };

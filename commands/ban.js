@@ -1,9 +1,7 @@
-//const { UserManager } = require("discord.js");
-
-const { MessageEmbed, Role } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 //NEED TO ADD TIME OF THE BAN TO EMBED
 
-//const Discord = require('discord.js');
+//const Discord = require('discord.js');  
 module.exports = {
     name: 'ban',
     permissions: ['KICK_MEMBERS'],

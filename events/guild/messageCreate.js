@@ -1,7 +1,7 @@
 const library = require('../../libraries/library.js');
 require('dotenv').config();
 
-module.exports = async (discord, client, message) => {
+module.exports = async (Discord, client, message) => {
 	const prefix = '!';
 
 	if (!message.content.startsWith(prefix) || message.author.bot) {
@@ -23,7 +23,7 @@ module.exports = async (discord, client, message) => {
 			return message.reply(`Missing Permissions, \` ${invalidPerms} \``);
 		}
 		try {
-			if (command) command.execute(client, message, args, discord);
+			if (command) command.execute(client, message, args, Discord);
 		} catch (err) {
 			console.log(err);
 		}

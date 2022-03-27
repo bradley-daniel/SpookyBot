@@ -6,7 +6,7 @@ module.exports = {
 	permissions: [],
 	description: 'Gives user a list of commands or helps user find help on a single command',
 	arguments: [' ', 'command'],
-	async execute(client, message, args, Discord) {
+	async execute(client, message, args,) {
 		const commandNames = client.commands.map((element) => element.name);
 		var validCommands = [];
 

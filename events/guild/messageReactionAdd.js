@@ -1,4 +1,4 @@
-module.exports = async (discord, cleint,  reaction, user) =>{
+module.exports = async (Discord, cleint,  reaction, user) =>{
     //message reaction that need to be saved between when the bot is ofline and online
     const tosMessageID = '956411360936357989';
     //switchs between different messages

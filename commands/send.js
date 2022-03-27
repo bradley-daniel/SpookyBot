@@ -5,9 +5,8 @@ module.exports = {
 	permissions: ['ADMINISTRATOR'],
 	description: 'Get the bot to send a message to the channel that the command was sent',
 	arguments: ['message'],
-	async execute(client, message, args, discord) {
-		const possableMessages = ['tos'];
-
+	async execute(client, message, args) {
+		const possableMessages = ['tos', 'rules', 'streaming', 'welcome'];
 		switch (args[0]) {
 			case 'tos':
 				message.delete();
