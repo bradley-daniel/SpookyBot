@@ -9,7 +9,7 @@ module.exports = {
 	arguments: [' ', 'command'],
 	async execute(client, message, args) {
 		const commandNames = client.commands.map((element) => element.name);
-		var validCommands = [];
+		let validCommands = [];
 
 		//get the commands that the user can use based on server perms
 		commandNames.forEach(function (element, index) {
@@ -58,8 +58,8 @@ module.exports = {
 
 //formats the command oject to a string of example commands
 function formatCommandExamples(command) {
-	var commandArgs = '';
-	var commandExamples = '';
+	let commandArgs = '';
+	let commandExamples = '';
 	if (command.arguments) {
 		command.arguments.forEach(function (element, index) {
 			if (element != ' ') {

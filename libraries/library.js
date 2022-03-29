@@ -18,7 +18,7 @@ function getValidPermissions(command, message) {
 	return invalidPerms;
 }
 function formatString(array, format) {
-	var string = '';
+	let string = '';
 	array.forEach((element) => {
 		string += ' ' + format + '' + element + '' + format + ' ';
 	});
@@ -35,9 +35,9 @@ async function setReactionSystem(channel, reactionMessage, reactions) {
 	}
 }
 async function deleteUpTo(channel, message, targetMessage) {
-	var found = false;
-	var msgs = [];
-	var messages = await channel.messages.fetch({ limit: 100 });
+	let found = false;
+	let msgs = [];
+	let messages = await channel.messages.fetch({ limit: 100 });
 	messages.forEach((msg) => {
 		if (msg.id == targetMessage.id) found = true;
 		if (!found && msg) msgs.push(msg);
