@@ -1,12 +1,13 @@
 const fs = require('fs');
 const library = require('../libraries/library.js');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SystemChannelFlags } = require('discord.js');
 module.exports = {
+	//need to add seperate cataory suppprt
 	name: 'help',
 	permissions: [],
 	description: 'Gives user a list of commands or helps user find help on a single command',
 	arguments: [' ', 'command'],
-	async execute(client, message, args,) {
+	async execute(client, message, args) {
 		const commandNames = client.commands.map((element) => element.name);
 		var validCommands = [];
 
@@ -27,7 +28,7 @@ module.exports = {
 				.setTitle('Help Sent!')
 				.setDescription("**Every command needs the prefix '!' to work!**\nFor more help on specific command do `!help [command]`")
 				.addFields({ 
-					name: "Casino Kevin's Commands", value: sCommands 
+					name: "Spooky Bot Commands", value: sCommands 
 				});
 			message.reply({ embeds: [helpEmbed] });
 			//message.channel.send(helpEmbed);

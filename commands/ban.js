@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js");
 //const Discord = require('discord.js');  
 module.exports = {
     name: 'ban',
-    permissions: ['KICK_MEMBERS'],
+    permissions: ['BAN_MEMBERS'],
     description: 'This command allows mods to ban members and state a reason and time period(Seconds)\nAn hour is 3600 Seconds or perm(for permaban)',
     arguments: ['@member', 'reason', 'time'],
     execute(client, message, args){
