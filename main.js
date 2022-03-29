@@ -17,7 +17,7 @@ const client = new Discord.Client({
 
 	],
 });
-mongoose
+/*mongoose
 	.connect(process.env.MONGODB_SRV, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
@@ -27,7 +27,7 @@ mongoose
 	})
 	.catch((err) => {
 		console.log(err);
-	});
+	});*/
 
 client.commands = new Discord.Collection();
 ['command_handler', 'event_handler'].forEach((handler) => {

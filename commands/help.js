@@ -10,16 +10,20 @@ module.exports = {
 	async execute(client, message, args) {
 		const commandNames = client.commands.map((element) => element.name);
 		let validCommands = [];
+		let validEconCommands = [];
 
 		//get the commands that the user can use based on server perms
 		commandNames.forEach(function (element, index) {
 			let command = client.commands.find(({ name }) => name === element);
 			let invalidPerms = library.getValidPermissions(command, message);
-			if (!invalidPerms.length && !command.catagory) {
-				validServerCommands.push(commandNames[index]);
+			if (!invalidPerms.length) {
+				validCommands.push(commandNames[index]);
+				if(command.catagory === 'econ_command'){
+					validEconCommands.push(commandNames[index]);
+				}
 			}
 		});
-		//sCommands = library.formatString(validCommands, '`');
+		//sCommands = library.formatString(validServerCommands, '`');
 
 		//check if the user getting help on all availbe commands or getting help on just one command
 		if (args.length < 1) {
@@ -27,12 +31,11 @@ module.exports = {
 				.setColor('#0099ff')
 				.setTitle('Help Sent!')
 				.setDescription("**Every command needs the prefix '!' to work!**\nFor more help on specific command do `!help [command]`")
-				.addFields({ 
-					name: "Spooky Bot Commands", value: sCommands 
-				});
+				.addFields(
+					{ name: "Uncategorized Commands", value: library.formatString(validCommands, '`') },
+					{ name: "Economy Commands", value: library.formatString(validEconCommands, '`') }
+				);
 			message.reply({ embeds: [helpEmbed] });
-			//message.channel.send(helpEmbed);
-
 		} else if (!validCommands.includes(args[0])) {
 			return message.reply('Sorry that is not a command that you can get help with use `!help` to get all usable commands');
 		} else {

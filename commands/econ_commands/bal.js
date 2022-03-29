@@ -5,7 +5,7 @@ module.exports = {
 	permissions: [],
 	description: 'This command is used to return the number of tokens this user has',
 	arguments: [],
-    catagory: 'econ_commands',
+    catagory: 'econ_command',
 	async execute(client, message, args, profileData) {
 		let tokens = library.numberWithCommas(profileData.tokens);
 		const balEmbed = new MessageEmbed()
