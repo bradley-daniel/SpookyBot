@@ -11,7 +11,7 @@ module.exports = async (Discord, client, message) => {
 	const cmd = args.shift().toLowerCase();
 	const command = client.commands.get(cmd);
 
-	//runs if the message is a command in Spooky Casino
+	//runs if the message is a command in MrGhost server
 	if (!command) {
 		return message.reply('Sorry that is not a valid command please use `!help` to get all usable commands!');
 	} else {
@@ -20,7 +20,13 @@ module.exports = async (Discord, client, message) => {
 			return message.reply(`Missing Permissions, \` ${invalidPerms} \``);
 		}
 		try {
-			if (command) command.execute(client, message, args);
+			if (command) {
+				if(command.catagory === 'econ_commands'){
+					command.execute(client, message, args, await library.getProfileData(message));
+				}else{
+					command.execute(client, message, args);
+				}
+			}
 		} catch (err) {
 			console.log(err);
 		}

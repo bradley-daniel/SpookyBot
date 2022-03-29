@@ -15,11 +15,11 @@ module.exports = {
 		commandNames.forEach(function (element, index) {
 			let command = client.commands.find(({ name }) => name === element);
 			let invalidPerms = library.getValidPermissions(command, message);
-			if (!invalidPerms.length) {
-				validCommands.push(commandNames[index]);
+			if (!invalidPerms.length && !command.catagory) {
+				validServerCommands.push(commandNames[index]);
 			}
 		});
-		sCommands = library.formatString(validCommands, '`');
+		//sCommands = library.formatString(validCommands, '`');
 
 		//check if the user getting help on all availbe commands or getting help on just one command
 		if (args.length < 1) {
