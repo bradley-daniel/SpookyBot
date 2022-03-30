@@ -10,7 +10,7 @@ module.exports = {
 		switch (args[0]) {
 			case 'tos':
 				message.delete();
-				const tosMessageChannel = message.channel;
+				//const tosMessageChannel = message.channel;
 				const tosEmbed = new MessageEmbed()
 					.setColor('#0099ff')
 					.setTitle('TOS')

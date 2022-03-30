@@ -1,4 +1,6 @@
-const library = require('../../libraries/library.js');
+const library = require('../../libraries/library.js')
+const mongLib = require('../../libraries/mongLib.js');
+
 require('dotenv').config();
 
 module.exports = async (Discord, client, message) => {
@@ -21,8 +23,9 @@ module.exports = async (Discord, client, message) => {
 		}
 		try {
 			if (command) {
-				if(command.catagory === 'econ_commands'){
-					command.execute(client, message, args, await library.getProfileData(message));
+				if(command.catagory === 'econ_command'){
+					let profileData = await mongLib.getProfileData(message)
+					command.execute(client, message, args, profileData);
 				}else{
 					command.execute(client, message, args);
 				}

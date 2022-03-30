@@ -1,4 +1,4 @@
-
+const profileModel = require('../../models/profileSchema');
 module.exports = async (Discord, client, member) => {
 	const userRoles = member.roles.cache.map((r) => r.name);
 	try {

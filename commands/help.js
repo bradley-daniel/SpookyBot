@@ -32,7 +32,7 @@ module.exports = {
 				.setTitle('Help Sent!')
 				.setDescription("**Every command needs the prefix '!' to work!**\nFor more help on specific command do `!help [command]`")
 				.addFields(
-					{ name: "Uncategorized Commands", value: library.formatString(validCommands, '`') },
+					{ name: "All Commands", value: library.formatString(validCommands, '`') },
 					{ name: "Economy Commands", value: library.formatString(validEconCommands, '`') }
 				);
 			message.reply({ embeds: [helpEmbed] });
@@ -71,11 +71,8 @@ function formatCommandExamples(command) {
 				commandExamples += '`!' + command.name + commandArgs + '`\n';
 			}
 		});
-	}
-
-	if (command.arguments) {
 		commandExamples += '`!' + command.name + commandArgs + '`\n';
-	} else {
+	}else {
 		commandExamples += '`!' + command.name + commandArgs + '`';
 	}
 	return commandExamples;
