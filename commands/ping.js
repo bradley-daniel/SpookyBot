@@ -4,6 +4,6 @@ module.exports = {
 	description: 'This sees if the bot is online!',
 	arguments: [],
 	execute(client, message, args) {
-		message.channel.send('Pong');
+		message.reply('Pong');
 	},
 };

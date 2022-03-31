@@ -1,8 +1,8 @@
 const profileModel = require('../../models/profileSchema');
 
-module.exports = async (client, Discord, member) =>{
-    const welcome_channel = member.guild.channels.cache.get('958144614752202792')
-    const botId = '955473532253515816';
-    const rulesChannelId = '939246503917142140'
-    welcome_channel.send('<@' + member.id + '> welcome to the server, please look over the rules in <#' + rulesChannelId + '> and accept the tos from <@' + botId + '>');
+module.exports = async (Discord, client, member) =>{
+    const welcome_channel = member.guild.channels.cache.find((c) => c.name === '📃welcome');
+    const botId = client.user.id;
+    const rulesChannelId  = member.guild.channels.cache.find((c) => c.name === '📕rules');
+    welcome_channel.send('<@' + member.id + '> welcome to the server, please look over the rules in <#' + rulesChannelId + '> and accept the **TOS** from <@' + botId + '>');
 }
