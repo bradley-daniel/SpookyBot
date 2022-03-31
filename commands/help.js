@@ -64,11 +64,12 @@ function formatCommandExamples(command) {
 	let commandArgs = '';
 	let commandExamples = '';
 	if (command.arguments) {
-		command.arguments.forEach(function (element, index) {
-			if (element != ' ') {
-				commandArgs += ' [' + command.arguments[index] + ']';
-			} else if (element == ' ') {
+		command.arguments.forEach(function (arg, index) {
+			if(arg == ' '){
 				commandExamples += '`!' + command.name + commandArgs + '`\n';
+				commandArgs = '';
+			}else{
+				commandArgs += ' [' + arg + ']';
 			}
 		});
 		commandExamples += '`!' + command.name + commandArgs + '`\n';
