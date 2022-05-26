@@ -6,7 +6,7 @@ module.exports = {
 	description: 'Get the bot to send a message to the channel that the command was sent',
 	arguments: ['message'],
 	async execute(client, message, args) {
-		const possableMessages = ['tos', 'rules', 'streaming', 'welcome'];
+		const possableMessages = ['tos', 'rules', 'streaming', 'welcome', 'twitchNotification'];
 		switch (args[0]) {
 			case 'tos':
 				message.delete();
@@ -21,17 +21,17 @@ module.exports = {
 				const tosMessage = await message.channel.send({embeds: [tosEmbed]});
 				await tosMessage.react('✅');
 				const memberRole = message.guild.roles.cache.find(role => role.name === 'Member');
-				client.on('messageReactionAdd', async (reaction, user) => {
-					if(reaction.message == tosMessage){
-						await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole);
-					}
-				});
-				client.on('messageReactionRemove', async (reaction, user) => {
-					if(reaction.message == tosMessage){
-						await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole);
-					}
-				});
 				break;
+			case 'twitchNotification':
+				message.delete()
+				const twitchNotificationEmbed = new MessageEmbed()
+					.setColor('#6441a5')
+					.setTitle('Twitch Notification')
+					.setDescription('React to this message to get a ping every time SpookyMrGhost goes live at https://www.twitch.tv/spookymrghost' + '!');
+				const twitchNotificationMessage = await message.channel.send({embeds: [twitchNotificationEmbed]});
+				await twitchNotificationMessage.react('✅');
+				const twitchNotificationRole = message.guild.roles.cache.find(role => role.name === 'Twitch Notification');
+			break;
 			case 'rules':
 				let rules = '1. No racism or harassment\n\n';
 				rules += '2. No hate speech of any kind\n\n';

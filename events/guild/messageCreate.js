@@ -5,7 +5,6 @@ require('dotenv').config();
 
 module.exports = async (Discord, client, message) => {
 	const prefix = '!';
-
 	if (!message.content.startsWith(prefix) || message.author.bot) {
 		return;
 	}
